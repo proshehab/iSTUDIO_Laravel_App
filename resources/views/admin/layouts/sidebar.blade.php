@@ -17,6 +17,14 @@
                       </a>
 
                   </li>
+                  <li>
+                      <a href="{{ route('category.index') }}"
+                          class="waves-effect {{ Route::is('category.index') ? 'active' : '' }}">
+                          <i class="bx bx-home-circle"></i>
+                          <span key="t-dashboards">Category</span>
+                      </a>
+
+                  </li>
 
                   <li>
                       <a href="#" class="has-arrow waves-effect">
