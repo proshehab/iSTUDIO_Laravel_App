@@ -1,6 +1,7 @@
 @extends('website.layouts.index')
 @section('title', 'About Us')
 @section('content')
+
     <!-- Hero Start -->
     <div class="container-fluid pb-5 bg-primary hero-header">
         <div class="container py-5">
