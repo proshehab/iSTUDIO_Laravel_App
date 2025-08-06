@@ -25,6 +25,14 @@
                       </a>
 
                   </li>
+                  <li>
+                      <a href="{{ route('homeHero.index') }}"
+                          class="waves-effect {{ Route::is('homeHero.index') ? 'active' : '' }}">
+                          <i class="bx bx-home-circle"></i>
+                          <span key="t-dashboards">Home Hero</span>
+                      </a>
+
+                  </li>
 
                   <li>
                       <a href="#" class="has-arrow waves-effect">

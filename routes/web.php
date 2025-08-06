@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\HomeHeroController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Website\FrontendController;
 
@@ -19,17 +20,28 @@ Route::get('/contact',[FrontendController::class,'contact'])->name('frontend.con
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('adminLogout');
 
-Route::middleware('guest')->controller(LoginController::class)->group(function () {
-    Route::get('/login', 'adminLogin')->name('adminLogin');
-    Route::post('/adminLogin', 'authenticate')->name('authenticate');
+// Routes for guests
+Route::middleware('guest')->group(function () {
+    Route::controller(LoginController::class)->group(function () {
+        Route::get('/login', 'adminLogin')->name('adminLogin');
+        Route::post('/adminLogin', 'authenticate')->name('authenticate');
+    });
 });
 
-Route::middleware('auth')->controller(DashboardController::class)->group(function () {
+// Routes for authenticated users
+Route::middleware('auth')->group(function () {
+    
+    // Dashboard Routes
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('dashboard.index');
+    });
 
-    Route::get('/dashboard', 'index')->name('dashboard.index');
-});
+    // Category Routes
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/category', 'index')->name('category.index');
+    });
 
-Route::middleware('auth')->controller(CategoryController::class)->group(function () {
-
-    Route::get('/category', 'index')->name('category.index');
+   Route::controller(HomeHeroController::class)->group(function () {
+        Route::get('/home-hero', 'index')->name('homeHero.index');
+    });
 });
