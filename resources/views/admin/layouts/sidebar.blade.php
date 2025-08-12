@@ -17,22 +17,23 @@
                       </a>
 
                   </li>
-                  <li>
-                      <a href="{{ route('category.index') }}"
-                          class="waves-effect {{ Route::is('category.index') ? 'active' : '' }}">
-                          <i class="bx bx-home-circle"></i>
-                          <span key="t-dashboards">Category</span>
-                      </a>
 
-                  </li>
                   <li>
-                      <a href="{{ route('homeHero.index') }}"
-                          class="waves-effect {{ Route::is('homeHero.index') ? 'active' : '' }}">
-                          <i class="bx bx-home-circle"></i>
-                          <span key="t-dashboards">Home Hero</span>
+                      <a href="javascript:void(0);"
+                          class="has-arrow waves-effect {{ Route::is('homeHero.*') ? 'active' : '' }}">
+                          <i class="bx bx-layout"></i>
+                          <span key="t-dashboards">Hero Section</span>
                       </a>
-
+                      <ul class="sub-menu" aria-expanded="true">
+                          <li>
+                              <a href="#" key="t-all-heros">All Heros</a>
+                          </li>
+                          <li>
+                              <a href="#" key="t-add-hero">Add Hero</a>
+                          </li>
+                      </ul>
                   </li>
+
 
                   <li>
                       <a href="#" class="has-arrow waves-effect">
