@@ -12,28 +12,28 @@
                             <form class="custom-validation" action="#">
 
                                 <div class="mb-3">
-                                    <label class="form-label">Required</label>
+                                    <label class="form-label">Title</label>
                                     <input type="text" class="form-control" required placeholder="Type something" />
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">E-Mail</label>
+                                    <label class="form-label">SubTitle</label>
                                     <div>
-                                        <input type="email" class="form-control" required parsley-type="email"
-                                            placeholder="Enter a valid e-mail" />
+                                        <input type="text" class="form-control" required
+                                            placeholder="Enter a valid subtitle" />
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">URL</label>
+                                    <label class="form-label">Feature</label>
                                     <div>
                                         <input parsley-type="url" type="url" class="form-control" required
-                                            placeholder="URL" />
+                                            placeholder="Feature" />
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Digits</label>
+                                    <label class="form-label">Slider Image</label>
                                     <div>
                                         <input data-parsley-type="digits" type="text" class="form-control" required
                                             placeholder="Enter only digits" />
