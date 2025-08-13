@@ -26,10 +26,13 @@
                       </a>
                       <ul class="sub-menu" aria-expanded="true">
                           <li>
-                              <a href="#" key="t-all-heros">All Heros</a>
+                              <a href="{{ route('heroSection.index') }}" key="t-all-heros">Heros</a>
                           </li>
                           <li>
-                              <a href="#" key="t-add-hero">Add Hero</a>
+                              <a href="#" key="t-add-hero">Hero Image</a>
+                          </li>
+                          <li>
+                              <a href="#" key="t-add-hero">Hero Feature</a>
                           </li>
                       </ul>
                   </li>

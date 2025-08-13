@@ -12,31 +12,23 @@
                             <form class="custom-validation" action="#">
 
                                 <div class="mb-3">
-                                    <label class="form-label">Title</label>
+                                    <label class="form-label">Title :</label>
                                     <input type="text" class="form-control" required placeholder="Type something" />
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">SubTitle</label>
+                                    <label class="form-label">Highlighted Word :</label>
                                     <div>
                                         <input type="text" class="form-control" required
-                                            placeholder="Enter a valid subtitle" />
+                                            placeholder="Enter a valid highlighted_word" />
                                     </div>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label class="form-label">Feature</label>
+                                    <label class="form-label">Subheading :</label>
                                     <div>
-                                        <input parsley-type="url" type="url" class="form-control" required
-                                            placeholder="Feature" />
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label">Slider Image</label>
-                                    <div>
-                                        <input data-parsley-type="digits" type="text" class="form-control" required
-                                            placeholder="Enter only digits" />
+                                        <input type="text" class="form-control" required
+                                            placeholder="Enter a valid subheading" />
                                     </div>
                                 </div>
 

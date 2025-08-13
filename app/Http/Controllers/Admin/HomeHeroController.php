@@ -9,6 +9,6 @@ class HomeHeroController extends Controller
 {
     public function index(){
         // Logic to display the home hero section
-        return view('admin.home_hero.index');
+        return view('admin.hero_section.index');
     }
 }

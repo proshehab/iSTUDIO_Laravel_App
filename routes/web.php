@@ -36,12 +36,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', 'index')->name('dashboard.index');
     });
 
-    // Category Routes
-    Route::controller(CategoryController::class)->group(function () {
-        Route::get('/category', 'index')->name('category.index');
-    });
 
    Route::controller(HomeHeroController::class)->group(function () {
-        Route::get('/home-hero', 'index')->name('homeHero.index');
+        Route::get('/hero-section', 'index')->name('heroSection.index');
     });
 });
