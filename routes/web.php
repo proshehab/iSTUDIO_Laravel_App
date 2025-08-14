@@ -40,5 +40,6 @@ Route::middleware('auth')->group(function () {
    Route::controller(HomeHeroController::class)->group(function () {
         Route::get('/hero-section', 'index')->name('heroSection.index');
         Route::post('/hero-section/store', 'store')->name('heroSection.store');
+        Route::post('/hero-section/update','update')->name('heroSection.update');
     });
 });

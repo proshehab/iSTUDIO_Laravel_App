@@ -30,6 +30,11 @@ class HomeHeroController extends Controller
                 ->with('success', 'Home Hero section created successfully.');
         }
 
+    // public function edit($id){
+    //     $heroSection = Hero::findOrFail($id);
+    //     return view('admin.hero_section.edit', compact('heroSection'));
+    // }
+
     public function update(Request $request, $id)
         {
             $validated = $request->validate([
@@ -39,9 +44,11 @@ class HomeHeroController extends Controller
                 // Add other fields and rules as needed
             ]);
 
-            Hero::findOrFail($id)->update($validated);
+            $heroSection = Hero::findOrFail($id);
+            $heroSection->update($validated);
 
-            return redirect()->route('heroSection.index')
+            return view('admin.hero_section.index', compact('heroSection'))
                 ->with('success', 'Home Hero section updated successfully.');
+            
         }
 }
