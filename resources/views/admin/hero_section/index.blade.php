@@ -43,13 +43,13 @@
                             <h4 class="card-title">Hero Home Section</h4>
 
                             <form class="custom-validation" action="{{ route('heroSection.update') }}" method="POST">
+
                                 @csrf
-                                @method('PUT')
+
                                 {{-- Title --}}
                                 <div class="mb-3">
                                     <label class="form-label">Title :</label>
-                                    <input type="text" name="title"
-                                        value="{{ old('title', $heroSection->title ?? '') }}"
+                                    <input type="text" name="title" value="{{ old('title', $heroes->title ?? '') }}"
                                         class="form-control @error('title') is-invalid @enderror"
                                         placeholder="Type something" />
                                     @error('title')
@@ -60,9 +60,10 @@
                                 {{-- Highlighted Word --}}
                                 <div class="mb-3">
                                     <label class="form-label">Highlighted Word :</label>
-                                    <input type="text" name="highlighted_word" value="{{ old('highlighted_word') }}"
+                                    <input type="text" name="highlighted_word"
+                                        value="{{ old('highlighted_word', $heroes->highlighted_word ?? '') }}"
                                         class="form-control @error('highlighted_word') is-invalid @enderror"
-                                        placeholder="Enter a highlighted word" />
+                                        placeholder="Type something" />
                                     @error('highlighted_word')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -71,7 +72,8 @@
                                 {{-- Subheading --}}
                                 <div class="mb-3">
                                     <label class="form-label">Subheading :</label>
-                                    <input type="text" name="subheading" value="{{ old('subheading') }}"
+                                    <input type="text" name="subheading"
+                                        value="{{ old('subheading', $heroes->subheading ?? '') }}"
                                         class="form-control @error('subheading') is-invalid @enderror"
                                         placeholder="Enter a valid subheading" />
                                     @error('subheading')
@@ -87,13 +89,11 @@
                                         Cancel
                                     </button>
                                 </div>
-
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 @endsection
