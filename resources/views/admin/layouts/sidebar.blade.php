@@ -32,7 +32,7 @@
                               <a href="{{ route('heroSection.image') }}" key="t-add-hero">Hero Image</a>
                           </li>
                           <li>
-                              <a href="#" key="t-add-hero">Hero Feature</a>
+                              <a href="{{ route('heroSection.feature') }}" key="t-add-hero">Hero Feature</a>
                           </li>
                       </ul>
                   </li>

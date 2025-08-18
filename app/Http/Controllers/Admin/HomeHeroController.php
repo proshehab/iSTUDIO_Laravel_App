@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Hero;
 use App\Models\HeroImage;
 
-
 class HomeHeroController extends Controller
 {
     public function index(){
@@ -23,7 +22,6 @@ class HomeHeroController extends Controller
                 'subheading' => 'required|string|max:255',
                 // Add other fields and rules as needed
             ]);
-
 
             Hero::create($validated);
 
@@ -85,5 +83,23 @@ class HomeHeroController extends Controller
             ->with('success', 'Hero image uploaded successfully.');
     }
         
+    public function feature(){
+        return view('admin.hero_section.feature');
+    }
+
+
+    public function featureStore(Request $request)
+    {
+        $validated = $request->validate([
+            'hero_id' => 'required|exists:heroes,id',
+            'icon' => 'required|string|max:255',
+            'title' => 'required|string|max:255',
+        ]);
+
+        Hero::findOrFail($validated['hero_id'])->features()->create($validated);
+
+        return redirect()->route('heroSection.feature')
+            ->with('success', 'Hero feature created successfully.');
+    }
 
 }
