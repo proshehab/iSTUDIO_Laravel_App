@@ -91,7 +91,7 @@ class HomeHeroController extends Controller
     public function featureStore(Request $request)
     {
         $validated = $request->validate([
-            'hero_id' => 'required|exists:heroes,id',
+            //'hero_id' => 'required|exists:heroes,id',
             'icon' => 'required|string|max:255',
             'title' => 'required|string|max:255',
         ]);
