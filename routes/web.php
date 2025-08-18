@@ -43,5 +43,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/hero-section/update','update')->name('heroSection.update');
 
         Route::get('/hero-image', 'image')->name('heroSection.image');
+        Route::post('/hero-imageCreate','imageCreate')->name('heroSection.image.create');
     });
 });

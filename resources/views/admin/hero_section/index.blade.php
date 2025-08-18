@@ -40,7 +40,7 @@
                 <div class="col-xl-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Hero Home Section</h4>
+                            <h1>Hero Home Section</h1>
 
                             <form class="custom-validation" action="{{ route('heroSection.update') }}" method="POST">
 

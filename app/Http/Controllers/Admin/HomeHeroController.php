@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hero;
+use App\Models\HeroImage;
 
 
 class HomeHeroController extends Controller
@@ -56,8 +57,33 @@ class HomeHeroController extends Controller
 
     public function image()
     {
-       // $heroes = Hero::find(1);
-        return view('admin.hero_section.image');
+       $hero = Hero::findOrFail(1); // Assuming you want to fetch the hero with ID 1
+        return view('admin.hero_section.image', compact('hero'));
     }
+
+  public function imageCreate(Request $request)
+    {
+       // dd($request->all());
+        $validated = $request->validate([
+            'hero_id' => 'required|exists:heroes,id',
+            'image_path' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $heroImage = new HeroImage();
+        $heroImage->hero_id = $validated['hero_id'];
+
+        if ($request->hasFile('image_path')) {
+            $file = $request->file('image_path');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('uploads/hero_images'), $filename);
+            $heroImage->image_path = $filename;
+        }
+
+        $heroImage->save();
+
+        return redirect()->route('heroSection.image')
+            ->with('success', 'Hero image uploaded successfully.');
+    }
+        
 
 }
