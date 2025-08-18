@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Admin - Dashboard')
+@section('title', 'Admin - Feature')
 
 @section('content')
 
@@ -47,7 +47,7 @@
                                 method="POST">
 
                                 @csrf
-
+                                <input type="hidden" name="hero_id" value="{{ $hero->id }}">
                                 {{-- Title --}}
                                 <div class="mb-3">
                                     <label class="form-label">Title :</label>
@@ -74,9 +74,12 @@
                                     <button type="submit" class="btn btn-primary waves-effect waves-light">
                                         Submit
                                     </button>
-                                    <button type="reset" class="btn btn-secondary waves-effect">
-                                        Cancel
+
+                                    <button type="button" class="btn btn-primary waves-effect waves-light">
+                                        <i class="bx bx-right-arrow-alt"></i> <a
+                                            href="{{ route('heroSection.feature.view') }}">List</a>
                                     </button>
+
                                 </div>
                             </form>
                         </div>

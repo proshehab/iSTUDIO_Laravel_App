@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/hero-imageCreate','imageCreate')->name('heroSection.image.create');
 
         Route::get('/hero-feature', 'feature')->name('heroSection.feature');
+        Route::get('/hero-featureView', 'featureList')->name('heroSection.feature.view');
         Route::post('/hero-feature/store', 'featureStore')->name('heroSection.feature.store');
     });
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hero;
 use App\Models\HeroImage;
+use App\Models\HeroFeature;
 
 class HomeHeroController extends Controller
 {
@@ -84,19 +85,31 @@ class HomeHeroController extends Controller
     }
         
     public function feature(){
-        return view('admin.hero_section.feature');
+        $hero = Hero::findOrFail(1);
+        return view('admin.hero_section.feature', compact('hero'));
     }
 
+
+    public function featureList()
+    {
+        $features = HeroFeature::where('hero_id', 1)->get();
+        return view('admin.hero_section.featureList', compact('features'));
+    }
 
     public function featureStore(Request $request)
     {
         $validated = $request->validate([
-            //'hero_id' => 'required|exists:heroes,id',
+            'hero_id' => 'required|exists:heroes,id',
             'icon' => 'required|string|max:255',
             'title' => 'required|string|max:255',
         ]);
 
-        Hero::findOrFail($validated['hero_id'])->features()->create($validated);
+        $heroFeature = new HeroFeature();
+        $heroFeature->hero_id = $validated['hero_id'];
+
+        $heroFeature->icon = $validated['icon'];
+        $heroFeature->title = $validated['title'];
+        $heroFeature->save();
 
         return redirect()->route('heroSection.feature')
             ->with('success', 'Hero feature created successfully.');
