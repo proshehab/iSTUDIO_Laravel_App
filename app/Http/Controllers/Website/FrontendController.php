@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Website;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Hero;
 
 class FrontendController extends Controller
 {
     public function index(){
-        return view('website.layouts.master');
+        $hero = Hero::first();
+        
+        return view('website.layouts.master', compact('hero'));
     }
 
     public function about(){
