@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hero;
+use App\Models\HeroImage;
 
 class FrontendController extends Controller
 {
     public function index(){
         $hero = Hero::first();
-        
-        return view('website.layouts.master', compact('hero'));
+        $hero_images = HeroImage::first();
+        return view('website.layouts.master', compact('hero', 'hero_images'));
     }
 
     public function about(){

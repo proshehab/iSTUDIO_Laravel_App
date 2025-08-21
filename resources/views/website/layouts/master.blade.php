@@ -58,11 +58,12 @@
 
                 <div class="col-lg-6">
                     <div class="owl-carousel header-carousel animated fadeIn">
-                        <img class="img-fluid" src="{{ asset('website') }}/img/hero-slider-1.jpg" alt="">
-                        <img class="img-fluid" src="{{ asset('website') }}/img/hero-slider-2.jpg" alt="">
-                        <img class="img-fluid" src="{{ asset('website') }}/img/hero-slider-3.jpg" alt="">
+                        @foreach ($hero_images as $image)
+                            <img class="img-fluid" src="{{ asset('storage/hero/' . $image->filename) }}" alt="">
+                        @endforeach
                     </div>
                 </div>
+
 
             </div>
             <div class="row g-5 animated fadeIn">
