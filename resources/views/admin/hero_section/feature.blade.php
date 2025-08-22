@@ -74,16 +74,50 @@
                                     <button type="submit" class="btn btn-primary waves-effect waves-light">
                                         Submit
                                     </button>
-
-                                    <button type="button" class="btn btn-primary waves-effect waves-light">
-                                        <i class="bx bx-right-arrow-alt"></i> <a
-                                            href="{{ route('heroSection.feature.view') }}">List</a>
-                                    </button>
-
                                 </div>
                             </form>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="card mt-2">
+                <div class="card-body">
+                    <h4 class="card-title">Hero Feature List</h4>
+
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Icon</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($features as $feature)
+                                <tr>
+                                    <td>{{ $feature->id }}</td>
+                                    <td>{{ $feature->title }}</td>
+                                    <td>{{ $feature->icon }}</td>
+
+                                    <td>
+                                        <a href="{{ route('heroSection.feature.edit', $feature->id) }}"
+                                            class="btn btn-warning btn-sm">Edit</a>
+
+                                        <form action="{{ route('heroSection.feature.delete', $feature->id) }}"
+                                            method="POST" class="d-inline"
+                                            onsubmit="return confirm('Are you sure you want to delete this feature?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

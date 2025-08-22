@@ -62,6 +62,53 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card mt-2">
+                <div class="card-body">
+                    <h4 class="card-title">Uploaded Hero Images</h4>
+
+                    @if ($hero_images->isEmpty())
+                        <p>No hero images uploaded yet.</p>
+                    @else
+                        <div class="table-responsive">
+                            <table class="table table-bordered align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Image</th>
+                                        <th>Filename</th>
+                                        <th>Uploaded At</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($hero_images as $index => $image)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>
+                                                <img src="{{ asset('uploads/hero_images/' . $image->image_path) }}"
+                                                    alt="Hero Image" width="100">
+                                            </td>
+                                            <td>{{ $image->image_path }}</td>
+                                            <td>{{ $image->created_at->format('Y-m-d H:i') }}</td>
+                                            <td>
+                                                <form action="{{ route('heroSection.image.delete', $image->id) }}"
+                                                    method="POST" class="d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"
+                                                        onclick="return confirm('Are you sure you want to delete this image?');">Delete</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
         </div>
     </div>
 

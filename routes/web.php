@@ -44,9 +44,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/hero-image', 'image')->name('heroSection.image');
         Route::post('/hero-imageCreate','imageCreate')->name('heroSection.image.create');
+        Route::delete('/hero-image/{id}', 'imageDelete')->name('heroSection.image.delete');
 
         Route::get('/hero-feature', 'feature')->name('heroSection.feature');
-        Route::get('/hero-featureView', 'featureList')->name('heroSection.feature.view');
         Route::post('/hero-feature/store', 'featureStore')->name('heroSection.feature.store');
+        Route::get('/hero-feature/{id}', 'featureEdit')->name('heroSection.feature.edit');
+        Route::put('/hero-feature/{id}', 'featureUpdate')->name('heroSection.feature.update');
+        Route::delete('/hero-feature/{id}', 'featureDelete')->name('heroSection.feature.delete');
     });
 });

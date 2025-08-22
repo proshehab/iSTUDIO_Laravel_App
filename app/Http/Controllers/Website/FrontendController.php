@@ -11,9 +11,10 @@ class FrontendController extends Controller
 {
     public function index(){
         $hero = Hero::first();
-        $hero_images = HeroImage::first();
+        $hero_images = HeroImage::all(); // ✅ Fetch all hero images
         return view('website.layouts.master', compact('hero', 'hero_images'));
     }
+
 
     public function about(){
         return view('website.pages.about');

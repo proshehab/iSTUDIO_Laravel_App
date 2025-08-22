@@ -54,11 +54,15 @@ class HomeHeroController extends Controller
 
     // Image
 
-    public function image()
-    {
-       $hero = Hero::findOrFail(1); // Assuming you want to fetch the hero with ID 1
-        return view('admin.hero_section.image', compact('hero'));
-    }
+   public function image()
+        {
+            $hero = Hero::findOrFail(1); // or however you get your specific hero
+            $hero_images = HeroImage::where('hero_id', $hero->id)->get(); // fetch related images
+
+            return view('admin.hero_section.image', compact('hero', 'hero_images'));
+        }
+
+
 
   public function imageCreate(Request $request)
     {
@@ -83,18 +87,31 @@ class HomeHeroController extends Controller
         return redirect()->route('heroSection.image')
             ->with('success', 'Hero image uploaded successfully.');
     }
+
+    public function imageDelete($id)
+    {
+        $heroImage = HeroImage::findOrFail($id);
+
+        // Delete the physical image file if it exists
+        $imagePath = public_path('uploads/hero_images/' . $heroImage->image_path);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+
+        // Delete the DB record
+        $heroImage->delete();
+
+        return redirect()->route('heroSection.image')
+            ->with('success', 'Hero image deleted successfully.');
+    }
+
         
     public function feature(){
         $hero = Hero::findOrFail(1);
-        return view('admin.hero_section.feature', compact('hero'));
-    }
-
-
-    public function featureList()
-    {
         $features = HeroFeature::where('hero_id', 1)->get();
-        return view('admin.hero_section.featureList', compact('features'));
+        return view('admin.hero_section.feature', compact('hero', 'features'));
     }
+
 
     public function featureStore(Request $request)
     {
@@ -114,5 +131,15 @@ class HomeHeroController extends Controller
         return redirect()->route('heroSection.feature')
             ->with('success', 'Hero feature created successfully.');
     }
+
+    public function featureEdit($id)
+    {
+        $feature = HeroFeature::findOrFail($id);
+        $hero = Hero::findOrFail($feature->hero_id); // optional, if you need it
+        $features = HeroFeature::where('hero_id', $hero->id)->get();
+
+        return view('admin.hero_section.feature_edit', compact('feature', 'hero', 'features'));
+    }
+
 
 }
